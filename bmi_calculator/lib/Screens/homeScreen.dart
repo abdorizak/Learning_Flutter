@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_import, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, duplicate_ignore, file_names
 import 'package:flutter/material.dart';
-import '../Utils/IconContent.dart';
+import '../widgets/IconContent.dart';
 import '../widgets/card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
