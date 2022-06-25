@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_import, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, duplicate_ignore, file_names
 import 'package:flutter/material.dart';
+import '../Utils/IconContent.dart';
 import '../widgets/card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -62,28 +63,4 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class IconContent extends StatelessWidget {
-  final String txt;
-  final double fontSize;
-  final IconData icon;
-  final double size;
 
-  IconContent({
-    required this.txt,
-    required this.fontSize,
-    required this.icon,
-    required this.size,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon, size: size),
-        SizedBox(height: 10),
-        Text(txt, style: TextStyle(fontSize: fontSize)),
-      ],
-    );
-  }
-}
