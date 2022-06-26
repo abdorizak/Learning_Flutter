@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_import, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, duplicate_ignore, file_names
 import 'package:flutter/material.dart';
-import '../widgets/IconContent.dart';
-import '../widgets/card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bmi_calculator/widgets/widgets.dart';
+
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
                   child: ReusubleCard(
                     child: IconContent(
                       txt: "Male",
-                      fontSize: 30,
+                      fontSize: 25,
                       icon: FontAwesomeIcons.mars,
                       size: 110,
                     ),
@@ -33,8 +33,8 @@ class HomeScreen extends StatelessWidget {
                   child: ReusubleCard(
                     child: IconContent(
                       txt: "Female",
-                      fontSize: 30,
-                      icon: FontAwesomeIcons.mars,
+                      fontSize: 25,
+                      icon: FontAwesomeIcons.venus,
                       size: 110,
                     ),
                   ),
@@ -43,16 +43,163 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ReusubleCard(),
+            child: ReusubleCard(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Height",
+                    style: TextStyle(fontSize: 32, color: Colors.grey),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        "180",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 45,
+                            color: Colors.grey),
+                      ),
+                      Text(
+                        "cm",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SliderTheme(
+                    data: SliderThemeData(
+                      activeTrackColor: Colors.white,
+                      inactiveTickMarkColor: Colors.grey,
+                      thumbColor: kBottomContainerColor,
+                      thumbShape: RoundSliderThumbShape(
+                        enabledThumbRadius: 16,
+                      ),
+                    ),
+                    child: Slider(
+                        value: 180,
+                        min: 10,
+                        max: 320,
+                        onChanged: (newVal) {
+                          print(newVal);
+                        }),
+                  ),
+                ],
+              ),
+            ),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: ReusubleCard(),
+                  child: ReusubleCard(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Weight",
+                          style: TextStyle(fontSize: 32, color: Colors.grey),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(
+                              "0",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 45,
+                                  color: Colors.grey),
+                            ),
+                            Text(
+                              "Kg",
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Round_Button(icon: Icons.add,),
+                            SizedBox(width: 10,),
+                            Round_Button(icon: Icons.remove,),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 Expanded(
-                  child: ReusubleCard(),
+                  child: ReusubleCard(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Weight",
+                          style: TextStyle(fontSize: 32, color: Colors.grey),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(
+                              "0",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 45,
+                                  color: Colors.grey),
+                            ),
+                            Text(
+                              "Kg",
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Round_Button(icon: Icons.add,),
+                            SizedBox(width: 10, ),
+                            Round_Button(icon: Icons.remove,)
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),

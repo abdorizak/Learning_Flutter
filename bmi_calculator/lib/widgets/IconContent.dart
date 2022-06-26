@@ -19,8 +19,8 @@ class IconContent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(icon, size: size),
-        const SizedBox(height: 10),
-        Text(txt, style: TextStyle(fontSize: fontSize)),
+        const SizedBox(height: 12),
+        Text(txt, style: TextStyle(fontSize: fontSize, color: Colors.grey)),
       ],
     );
   }
