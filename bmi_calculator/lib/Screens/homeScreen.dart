@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/widgets/widgets.dart';
 
-
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -143,9 +142,18 @@ class HomeScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Round_Button(icon: Icons.add,),
-                            SizedBox(width: 10,),
-                            Round_Button(icon: Icons.remove,),
+                            Round_Button(
+                              icon: Icons.add,
+                              onPressed: () {
+                                print("add");
+                              },
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Round_Button(
+                              icon: Icons.remove,
+                            ),
                           ],
                         )
                       ],
@@ -192,9 +200,18 @@ class HomeScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Round_Button(icon: Icons.add,),
-                            SizedBox(width: 10, ),
-                            Round_Button(icon: Icons.remove,)
+                            Round_Button(
+                              icon: Icons.add,
+                              onPressed: () {
+                                print("Add");
+                              },
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Round_Button(
+                              icon: Icons.remove,
+                            )
                           ],
                         )
                       ],
@@ -204,10 +221,24 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
+          RawMaterialButton(
+            onPressed: () {},
+            fillColor: kBottomContainerColor,
+            constraints: BoxConstraints.tightFor(
+              width: double.infinity,
+              height: 56,
+            ),
+            child: Text(
+              "CALCULATE",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
-
-
