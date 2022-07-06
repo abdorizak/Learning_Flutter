@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/widgets/widgets.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  double height = 180;
+  double weight = 65;
+  int age = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                     textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
-                        "180",
+                        height.toInt().toString(),
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 45,
@@ -88,11 +96,13 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     child: Slider(
-                        value: 180,
+                        value: height,
                         min: 10,
                         max: 320,
                         onChanged: (newVal) {
-                          print(newVal);
+                          setState(() {
+                            height = newVal;
+                          });
                         }),
                   ),
                 ],
@@ -108,8 +118,11 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Weight",
-                          style: TextStyle(fontSize: 32, color: Colors.grey),
+                          "WEIGHT",
+                          style: TextStyle(
+                              fontSize: 32,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(
                           height: 10,
@@ -120,7 +133,7 @@ class HomeScreen extends StatelessWidget {
                           textBaseline: TextBaseline.alphabetic,
                           children: [
                             Text(
-                              "0",
+                              weight.toInt().toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 45,
@@ -143,17 +156,14 @@ class HomeScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Round_Button(
-                              icon: Icons.add,
-                              onPressed: () {
-                                print("add");
-                              },
-                            ),
+                                icon: Icons.add,
+                                onPressed: () => setState(() => weight += 1)),
                             SizedBox(
                               width: 10,
                             ),
                             Round_Button(
-                              icon: Icons.remove,
-                            ),
+                                icon: Icons.remove,
+                                onPressed: () => setState(() => weight -= 1)),
                           ],
                         )
                       ],
@@ -164,10 +174,14 @@ class HomeScreen extends StatelessWidget {
                   child: ReusubleCard(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
-                          "Weight",
-                          style: TextStyle(fontSize: 32, color: Colors.grey),
+                          "AGE",
+                          style: TextStyle(
+                              fontSize: 32,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(
                           height: 10,
@@ -178,16 +192,16 @@ class HomeScreen extends StatelessWidget {
                           textBaseline: TextBaseline.alphabetic,
                           children: [
                             Text(
-                              "0",
+                              age.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 45,
                                   color: Colors.grey),
                             ),
                             Text(
-                              "Kg",
+                              "yrs",
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.grey,
                               ),
@@ -201,17 +215,16 @@ class HomeScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Round_Button(
-                              icon: Icons.add,
-                              onPressed: () {
-                                print("Add");
-                              },
-                            ),
+                                icon: Icons.add,
+                                onPressed: () => setState(() => age += 1)),
                             SizedBox(
                               width: 10,
                             ),
                             Round_Button(
-                              icon: Icons.remove,
-                            )
+                                icon: Icons.remove,
+                                onPressed: () => setState(() => (age <= 0)
+                                    ? print("age should not be less than 0")
+                                    : age -= 1))
                           ],
                         )
                       ],
