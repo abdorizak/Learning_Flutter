@@ -1,17 +1,37 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_import, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, duplicate_ignore, file_names
+import 'package:bmi_calculator/Screens/resultScreen.dart';
+import 'package:bmi_calculator/widgets/customButton.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/widgets/widgets.dart';
+import 'dart:math';
 
 class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+enum Gender { male, female }
+
 class _HomeScreenState extends State<HomeScreen> {
   double height = 180;
   double weight = 65;
-  int age = 0;
+  int age = 18;
+  Gender selectedGender = Gender.male;
+
+  void _generateResult() {
+    double result = weight / pow(height / 100, 2);
+    print(result.round());
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ResultScreen(
+          result: result,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Expanded(
                   child: ReusubleCard(
+                    selected: selectedGender == Gender.male ? true : false,
+                    onPressed: () =>
+                        {setState(() => selectedGender = Gender.male)},
                     child: IconContent(
                       txt: "Male",
                       fontSize: 25,
@@ -38,6 +61,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Expanded(
                   child: ReusubleCard(
+                    selected: selectedGender == Gender.female ? true : false,
+                    onPressed: () =>
+                        {setState(() => selectedGender = Gender.female)},
                     child: IconContent(
                       txt: "Female",
                       fontSize: 25,
@@ -234,22 +260,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          RawMaterialButton(
-            onPressed: () {},
-            fillColor: kBottomContainerColor,
-            constraints: BoxConstraints.tightFor(
-              width: double.infinity,
-              height: 56,
-            ),
-            child: Text(
-              "CALCULATE",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ),
+          CustomButton(
+            onPressed: _generateResult,
+          )
         ],
       ),
     );
