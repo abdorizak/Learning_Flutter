@@ -21,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _generateResult() {
     double result = weight / pow(height / 100, 2);
-    print(result.round());
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -248,9 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Round_Button(
                                 icon: Icons.remove,
-                                onPressed: () => setState(() => (age <= 0)
-                                    ? print("age should not be less than 0")
-                                    : age -= 1))
+                                onPressed: () => setState(() => (age <= 0) ? print("age should not be less than 0") : age -= 1))
                           ],
                         )
                       ],
