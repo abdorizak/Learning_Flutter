@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, file_names, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 
-import '../Widgets/welcomeView.dart';
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key, required this.title}) : super(key: key);
 
@@ -53,38 +51,55 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
-                      text: 'Mogadishu, SO',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
+                    text: 'Mogadishu, SO',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: '\nupdated at: 12:00 PM',
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w200,
+                          color: Colors.white,
+                        ),
                       ),
-                      children: [
-                        TextSpan(
-                          text: '\nupdated at: 12:00 PM',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.w200,
-                            color: Colors.white,
-                          ),
+                      TextSpan(
+                        text: '\n\n28.9',
+                        style: TextStyle(
+                          fontSize: 38,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
                         ),
-                        TextSpan(
-                          text: '\n\n28.9°C',
-                          style: TextStyle(
-                            fontSize: 38,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white,
-                          ),
+                      ),
+                      TextSpan(
+                        text: '°C',
+                        style: TextStyle(
+                          fontSize: 38,
+                          fontWeight: FontWeight.w100,
                         ),
-                        TextSpan(
-                          text: '\n⛈',
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white,
-                          ),
+                      ),
+                      TextSpan(
+                        text: '\n⛈',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
                         ),
-                      ]),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              IconButton(
+                // ignore: avoid_print
+                onPressed: () {},
+                icon: Icon(
+                  Icons.refresh,
+                  color: Colors.white,
+                  size: 30,
                 ),
               ),
             ],
@@ -93,7 +108,25 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.green,
-        onPressed: () {},
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                    title: Text('Weather App'),
+                    backgroundColor: Color.fromARGB(255, 213, 124, 255),
+                    content: Text(
+                        'Weather App is a Flutter app that displays weather city and temperature in your city.\n\nThis app is developed by @adorizak.'),
+                    actions: [
+                      TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text(
+                            'ok',
+                            style: TextStyle(color: Colors.black),
+                          ))
+                    ]);
+              });
+        },
         child: Icon(Icons.info_rounded),
       ),
     );
